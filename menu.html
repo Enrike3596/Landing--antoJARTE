@@ -122,9 +122,28 @@
 <button id="theme-toggle" class="p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full transition-all active:scale-95 duration-200">
 <span class="material-symbols-outlined text-slate-600 dark:text-slate-300" data-icon="dark_mode">dark_mode</span>
 </button>
-<button id="cart-toggle" class="relative p-2 bg-primary text-on-primary rounded-full hover:opacity-90 transition-all active:scale-95 shadow-md">
-    <span class="material-symbols-outlined">shopping_bag</span>
-    <span class="cart-badge absolute -top-1 -right-1 w-5 h-5 bg-[#FFD700] text-black text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-primary">0</span>
+<button id="cart-toggle" 
+class="relative group flex items-center justify-center w-12 h-12 rounded-full 
+bg-gradient-to-br from-pink-600 to-pink-500 text-white shadow-lg 
+hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
+
+    <!-- Icono -->
+    <span class="material-symbols-outlined text-[26px] transition-transform duration-300 group-hover:rotate-6">
+        shopping_bag
+    </span>
+
+    <!-- Badge -->
+    <span id="cart-count"
+    class="absolute -top-1.5 -right-1.5 min-w-[20px] h-[20px] px-1 
+    bg-yellow-400 text-black text-[10px] font-bold 
+    rounded-full flex items-center justify-center 
+    border-2 border-white shadow-md
+    scale-100 group-hover:scale-110 transition-all duration-300">
+        0
+    </span>
+
+    <!-- Glow efecto -->
+    <span class="absolute inset-0 rounded-full bg-pink-400 opacity-0 group-hover:opacity-20 blur-md transition-all"></span>
 </button>
 </div>
 </nav>
@@ -334,23 +353,54 @@
 </button>
 
 <script>
-    const $ = (id) => document.getElementById(id);
-    const htmlElement = document.documentElement;
-    const cartSidebar = $('cart-sidebar');
-    const closeCartBtn = $('close-cart');
-    const openCartBtns = [$('cart-toggle'), $('cart-toggle-mobile')];
-
+// =======================
+// ⚡ HELPERS
+// =======================
+const $ = (id) => document.getElementById(id);
 
 // =======================
-// 🧁 CARRITO DINÁMICO
+// 🌙 VARIABLES
 // =======================
-    let carrito = [];
-    const cartContainer = document.querySelector("#cart-sidebar .flex-grow");
-    const totalElement = document.querySelector("#cart-sidebar .font-bold span:last-child");
-    const badges = document.querySelectorAll(".cart-badge");
+const htmlElement = document.documentElement;
+const cartSidebar = $('cart-sidebar');
+const closeCartBtn = $('close-cart');
+const openCartBtns = [$('cart-toggle'), $('cart-toggle-mobile')];
 
-    openCartBtns.forEach(btn => btn?.addEventListener('click', () => cartSidebar.classList.remove('translate-x-full')));
-    closeCartBtn.addEventListener('click', () => cartSidebar.classList.add('translate-x-full'));
+let carrito = [];
+
+const cartContainer = document.querySelector("#cart-sidebar .flex-grow");
+const totalElement = document.querySelector("#cart-sidebar .font-bold span:last-child");
+const badges = document.querySelectorAll(".cart-badge");
+const cartButton = $('cart-toggle');
+
+// =======================
+// 🛒 TOGGLE SIDEBAR
+// =======================
+openCartBtns.forEach(btn => {
+    btn?.addEventListener('click', () => {
+        cartSidebar.classList.remove('translate-x-full');
+    });
+});
+
+closeCartBtn?.addEventListener('click', () => {
+    cartSidebar.classList.add('translate-x-full');
+});
+
+// =======================
+// ✨ ANIMACIONES
+// =======================
+function animarBadge() {
+    badges.forEach(b => {
+        b.classList.add("scale-125");
+        setTimeout(() => b.classList.remove("scale-125"), 150);
+    });
+}
+
+function animarBoton() {
+    if (!cartButton) return;
+    cartButton.classList.add("animate-pulse");
+    setTimeout(() => cartButton.classList.remove("animate-pulse"), 400);
+}
 
 // =======================
 // ➕ AGREGAR PRODUCTOS
@@ -359,41 +409,80 @@ document.querySelectorAll(".add-to-cart").forEach(btn => {
     btn.addEventListener("click", () => {
 
         const card = btn.closest(".group");
-        const nombre = card.querySelector("h4").innerText;
-        const precio = card.querySelector("p.text-primary").textContent;
+        if (!card) return;
+
+        const nombre = card.querySelector("h4")?.innerText || "Producto";
+        const precio = card.querySelector("p.text-primary")?.textContent || "$0";
+
         carrito.push({ nombre, precio });
 
         renderCarrito();
+        animarBadge();
+        animarBoton();
     });
 });
 
+// =======================
+// ❌ ELIMINAR PRODUCTO
+// =======================
+function eliminar(index) {
+    carrito.splice(index, 1);
+    renderCarrito();
+}
 
 // =======================
-// 🎨 RENDER
+// 🎨 RENDER CARRITO
 // =======================
 function renderCarrito() {
     cartContainer.innerHTML = "";
+
     let total = 0;
+
+    if (carrito.length === 0) {
+        cartContainer.innerHTML = `
+            <p class="text-center text-zinc-400 mt-10">
+                🛒 Tu carrito está vacío
+            </p>
+        `;
+    }
+
     carrito.forEach((item, index) => {
-        const priceNumber = parseFloat(item.precio.replace("$",""));
+
+        const priceNumber = parseFloat(item.precio.replace("$","")) || 0;
         total += priceNumber;
+
         const div = document.createElement("div");
-        div.className = "pt-4 flex gap-4 items-center";
+        div.className = "pt-4 flex gap-4 items-center justify-between border-b pb-2";
 
         div.innerHTML = `
             <div class="flex-grow">
-                <p class="font-semibold text-primary dark:text-pink-300">${item.nombre}</p>
-                <p class="text-sm text-zinc-500 dark:text-slate-400">${item.precio}</p>
+                <p class="font-semibold text-primary dark:text-pink-300">
+                    ${item.nombre}
+                </p>
+                <p class="text-sm text-zinc-500 dark:text-slate-400">
+                    ${item.precio}
+                </p>
             </div>
-            <button onclick="eliminar(${index})" class="material-symbols-outlined text-red-400">delete</button>
+
+            <button onclick="eliminar(${index})"
+                class="material-symbols-outlined text-red-400 hover:scale-110 transition">
+                delete
+            </button>
         `;
 
         cartContainer.appendChild(div);
     });
 
     totalElement.textContent = "$" + total.toFixed(2);
-    badges.forEach(b => b.textContent = carrito.length);
+
+    badges.forEach(b => {
+        b.textContent = carrito.length;
+    });
 }
+
+// =======================
+// 🚀 INIT
+// =======================
 renderCarrito();
 
 // =======================
