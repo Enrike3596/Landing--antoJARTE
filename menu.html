@@ -4,7 +4,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Serif:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -105,63 +104,47 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-background font-body-md text-on-background selection:bg-surface-variant">
+<body class="bg-background dark:bg-slate-950 font-body-md text-on-background dark:text-slate-200 selection:bg-surface-variant transition-colors duration-500">
 <!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 border-b border-white/20 bg-white/70 backdrop-blur-md shadow-sm">
-<nav class="flex justify-between items-center h-20 px-6 md:px-12 w-full max-w-full">
-<div class="text-2xl font-bold tracking-tight text-pink-600 font-serif">Glazed &amp; Gilded</div>
-<div class="hidden md:flex items-center space-gap-8 gap-x-8 font-serif text-zinc-900">
-<a class="text-pink-600 font-bold border-b-2 border-pink-600 pb-1" href="#">Menu</a>
-<a class="text-zinc-600 hover:text-pink-500 transition-colors" href="#">Gifts</a>
-<a class="text-zinc-600 hover:text-pink-500 transition-colors" href="#">Our Story</a>
-<a class="text-zinc-600 hover:text-pink-500 transition-colors" href="#">Locations</a>
+<header class="fixed top-0 w-full z-50 border-b border-white/20 dark:border-slate-800 glass-effect bg-white/70 dark:bg-slate-900/70 shadow-sm">
+<nav class="flex justify-between items-center h-20 px-6 md:px-12 w-full max-w-7xl mx-auto">
+<a class="text-2xl font-headline-lg font-bold text-primary dark:text-[#FF4081]" href="index.html">Sweet Donuts</a>
+<div class="hidden md:flex items-center gap-8 font-body-md">
+<a class="text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="index.html#historia" data-i18n="nav_historia">Historia</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="menu.html" data-i18n="nav_menu">Menú</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="index.html#testimonios" data-i18n="nav_testimonios">Testimonios</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación</a>
 </div>
 <div class="flex items-center gap-4">
-<button class="material-symbols-outlined p-2 text-zinc-600 hover:opacity-80 transition-all duration-300 cursor-pointer active:scale-95" data-icon="language">language</button>
-<button class="material-symbols-outlined p-2 text-zinc-600 hover:opacity-80 transition-all duration-300 cursor-pointer active:scale-95" data-icon="dark_mode">dark_mode</button>
-<button class="material-symbols-outlined p-2 bg-primary text-on-primary rounded-full hover:opacity-80 transition-all duration-300 cursor-pointer active:scale-95" data-icon="shopping_bag">shopping_bag</button>
+<button id="lang-toggle" class="p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300" data-icon="language">language</span>
+</button>
+<button id="theme-toggle" class="p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300" data-icon="dark_mode">dark_mode</span>
+</button>
+<button id="cart-toggle" class="relative p-2 bg-primary text-on-primary rounded-full hover:opacity-90 transition-all active:scale-95 shadow-md">
+    <span class="material-symbols-outlined">shopping_bag</span>
+    <span class="cart-badge absolute -top-1 -right-1 w-5 h-5 bg-[#FFD700] text-black text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-primary">0</span>
+</button>
 </div>
 </nav>
 </header>
 <!-- SideNavBar (Active Cart) -->
-<aside class="fixed right-0 top-0 h-full w-80 md:w-96 shadow-2xl z-[60] bg-zinc-50 border-l border-zinc-200 flex flex-col p-6 space-y-4 font-serif text-zinc-800">
+<aside id="cart-sidebar" class="fixed right-0 top-0 h-full w-80 md:w-96 shadow-2xl z-[60] bg-zinc-50 dark:bg-slate-900 border-l border-zinc-200 dark:border-slate-800 flex flex-col p-6 space-y-4 font-serif text-zinc-800 dark:text-slate-100 transform translate-x-full transition-transform duration-300">
 <div class="flex justify-between items-center pb-4">
 <div>
-<h2 class="font-headline-md text-primary">Your Selection</h2>
-<p class="text-sm text-zinc-500 italic">Artisanal treats awaiting</p>
+<h2 class="font-headline-md text-primary" data-i18n="cart_title">Your Selection</h2>
+<p class="text-sm text-zinc-500 italic" data-i18n="cart_subtitle">Artisanal treats awaiting</p>
 </div>
-<button class="material-symbols-outlined text-zinc-400">close</button>
+<button id="close-cart" class="material-symbols-outlined text-zinc-400 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors">close</button>
 </div>
-<div class="flex-grow space-y-4 overflow-y-auto hide-scrollbar divide-y divide-zinc-200">
-<!-- Cart Item 1 -->
-<div class="pt-4 flex gap-4 group cursor-pointer hover:translate-x-1 transition-transform ease-in-out duration-300">
-<div class="w-16 h-16 rounded-lg bg-surface-variant overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="A close-up photograph of a premium lavender-infused donut with a delicate light purple glaze and dried edible lavender petals on top. The lighting is soft and warm, emphasizing the pillowy texture of the pastry against a minimalist Glaze Cream background. The style is elegant and artisanal, reflecting a high-end patisserie aesthetic with subtle pink accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATeLdo0Y-JsdPjoHf1KhKIu75wnPz0r9DDby2miLJ3ISDytu9UrjClp_09riuQmzIgUali5bJXrRrXuIDMQxN8yicwxZWYxLLjLCZRwEFIp6iK7XTL-ZrEWF5UhqB19Uk7Kh_pY-4kgcL2j2milPfOj2l8KU-rnYJF2XA-ciecT9PREhYTyOy74XuQhADIw6zQ3cFboK0QPiZgoOKNfVvWXlC4RndhAIYA9h-JaVDZp9brQS6Rfz6CqjXVUCcvfyYdeuCa22TB18A"/>
-</div>
-<div class="flex-grow">
-<p class="font-semibold text-primary">Flor de Lavanda</p>
-<p class="text-sm text-zinc-500">1 x $4.50</p>
-</div>
-<button class="material-symbols-outlined text-zinc-400 hover:text-error transition-colors">delete</button>
-</div>
-<!-- Cart Item 2 -->
-<div class="pt-4 flex gap-4 bg-pink-50 rounded-lg p-3 group cursor-pointer hover:translate-x-1 transition-transform ease-in-out duration-300">
-<div class="w-16 h-16 rounded-lg bg-surface-variant overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="A high-quality image of a salted caramel donut dripping with rich golden glaze and a sprinkle of coarse sea salt crystals. The lighting highlights the glossy reflection of the caramel under a bright, high-key studio setting. The overall mood is indulgent and sophisticated, staying true to the brand's minimalist and modern minimalist with glassmorphism accents style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHp2ja91BGMbFNJYo9TilwsR8X8owg4rG6SQJRw8Nqb5JnpPUemRhFc0dFMXwsljiYsmd_EoGCzpxjE6axb6qLhTMivXTxL20roVPPNRdp462843g_lFOh3t8QJe-1N4eobDuzR9Gn1OnqH00G2fF9IEelVsQL22--1JbO2cPUdIFNLaVDzYgK4iJM7RXKeSAxJCTxOC2arxxOM_JuCeQHi-6Ei_7Crvae2EFMu5bcTSrw8jh_OP8QundNP9Yp5785neDaQkqLdPc"/>
-</div>
-<div class="flex-grow">
-<p class="font-semibold text-pink-700">Caramelo Salado</p>
-<p class="text-sm text-pink-600/70">1 x $4.25</p>
-</div>
-<button class="material-symbols-outlined text-pink-400">delete</button>
-</div>
-</div>
-<div class="pt-6 border-t border-zinc-200">
+<div class="flex-grow space-y-4 overflow-y-auto hide-scrollbar divide-y divide-zinc-200 dark:divide-slate-800"></div>
+<div class="pt-6 border-t border-zinc-200 dark:border-slate-800">
 <div class="flex justify-between mb-4 font-bold">
-<span>Total</span>
+<span data-i18n="cart_total">Total</span>
 <span>$8.75</span>
 </div>
-<button class="w-full py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg hover:opacity-90 transition-all active:scale-95">
+<button class="w-full py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg hover:opacity-90 transition-all active:scale-95" data-i18n="btn_checkout">
                 Proceed to Checkout
             </button>
 </div>
@@ -169,142 +152,142 @@
 <main class="pt-28 pb-12 px-6 md:px-margin-desktop max-w-container-max mx-auto">
 <!-- Hero Title -->
 <section class="mb-12 text-center">
-<h1 class="font-display-lg text-on-surface mb-2">Nuestro Menú Artesanal</h1>
-<p class="font-body-lg text-secondary max-w-2xl mx-auto">Cada donut es una obra de arte, creada a mano con ingredientes de origen local y pasión por la excelencia.</p>
+<h1 class="font-display-lg text-on-surface dark:text-slate-100 mb-2" data-i18n="menu_page_title">Nuestro Menú Artesanal</h1>
+<p class="font-body-lg text-secondary dark:text-slate-400 max-w-2xl mx-auto" data-i18n="menu_page_desc">Cada donut es una obra de arte, creada a mano con ingredientes de origen local y pasión por la excelencia.</p>
 </section>
 <!-- Category Filter -->
 <div class="flex gap-4 overflow-x-auto pb-8 hide-scrollbar snap-x">
-<button class="px-8 py-3 rounded-full bg-primary text-on-primary font-semibold shadow-md flex-shrink-0 snap-start">Todas</button>
-<button class="px-8 py-3 rounded-full bg-white text-secondary border border-outline-variant hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start">Clásicas</button>
-<button class="px-8 py-3 rounded-full bg-white text-secondary border border-outline-variant hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start">Premium</button>
-<button class="px-8 py-3 rounded-full bg-white text-secondary border border-outline-variant hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start">Rellenas</button>
-<button class="px-8 py-3 rounded-full bg-white text-secondary border border-outline-variant hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start">Veganas</button>
+<button class="px-8 py-3 rounded-full bg-primary text-on-primary font-semibold shadow-md flex-shrink-0 snap-start" data-i18n="cat_all">Todas</button>
+<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_classics">Clásicas</button>
+<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_premium">Premium</button>
+<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_filled">Rellenas</button>
+<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_vegan">Veganas</button>
 </div>
 <!-- Promociones Bento Grid -->
 <section class="mb-20">
-<h2 class="font-headline-lg text-on-surface mb-8">Promociones Especiales</h2>
+<h2 class="font-headline-lg text-on-surface dark:text-slate-100 mb-8" data-i18n="promo_title">Promociones Especiales</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <div class="md:col-span-2 relative h-64 rounded-lg overflow-hidden group cursor-pointer">
 <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An assortment of six colorful artisanal donuts beautifully arranged in a sleek minimalist box. The lighting is soft and diffused, creating a luxurious atmosphere that highlights the vibrant pink and gold glazes. The composition is clean with plenty of negative space, capturing the modern minimalist aesthetic of a high-end patisserie." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8jmZvjYJq-WCPOV9U4Juv7CUH1wVXnPFP3UoyMRvoSKFsAatiIkzTVMzY70AVQ4vExTMgIyz29lwF5linH_ouoxrkBZIvoK90biYl60NL9RulZ3E8kjbeDELfUy7dUCNq7VYHKtJv5AYFKLqtqzF3Di6dBsrXXWGuY6sL0JzEvyJjbVHSf1AhutopxPX-Q68mTyRb_3a1h7phic6k9-dc-Yfd56wHe-1vtlmXsSGjLqX9IBwJnrOUTAO1w5_tggyzn_s3PBeBA2c"/>
 <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex flex-col justify-center p-8">
 <span class="bg-primary-container text-on-primary-container text-xs font-bold px-3 py-1 rounded-full w-fit mb-3">BEST SELLER</span>
-<h3 class="font-headline-lg text-white mb-1">Caja de 6 Unidades</h3>
-<p class="text-white/80 mb-4">Elige tus favoritas y ahorra un 20%</p>
+<h3 class="font-headline-lg text-white mb-1" data-i18n="promo_box_title">Caja de 6 Unidades</h3>
+<p class="text-white/80 mb-4" data-i18n="promo_box_desc">Elige tus favoritas y ahorra un 20%</p>
 <p class="text-3xl font-bold text-white">$12.00</p>
 </div>
 </div>
-<div class="bg-surface-variant/30 border border-primary-fixed p-8 rounded-lg flex flex-col justify-center items-center text-center">
+<div class="bg-surface-variant/30 dark:bg-slate-900/50 border border-primary-fixed dark:border-slate-800 p-8 rounded-lg flex flex-col justify-center items-center text-center">
 <span class="material-symbols-outlined text-primary text-5xl mb-4" data-icon="coffee">coffee</span>
-<h3 class="font-headline-md text-on-surface mb-2">Dúo Café + Donut</h3>
-<p class="text-secondary mb-6">El maridaje perfecto para tu mañana.</p>
+<h3 class="font-headline-md text-on-surface dark:text-slate-100 mb-2" data-i18n="promo_duo_title">Dúo Café + Donut</h3>
+<p class="text-secondary dark:text-slate-400 mb-6" data-i18n="promo_duo_desc">El maridaje perfecto para tu mañana.</p>
 <p class="text-4xl font-bold text-primary mb-6">$5.00</p>
-<button class="px-6 py-2 bg-primary text-on-primary rounded-full text-sm font-bold">Lo quiero</button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full text-sm font-bold" data-i18n="btn_want_it">Lo quiero</button>
 </div>
 </div>
 </section>
 <!-- Product Grid -->
 <section>
 <div class="flex justify-between items-end mb-8">
-<h2 class="font-headline-lg text-on-surface">Selección del Chef</h2>
+<h2 class="font-headline-lg text-on-surface dark:text-slate-100" data-i18n="chef_selection">Selección del Chef</h2>
 <div class="flex items-center gap-2 text-secondary cursor-pointer hover:text-primary transition-colors">
-<span class="text-sm font-semibold">Filtrar por precio</span>
+<span class="text-sm font-semibold" data-i18n="filter_price">Filtrar por precio</span>
 <span class="material-symbols-outlined">filter_list</span>
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-12">
 <!-- Product 1 -->
 <div class="group">
-<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low relative shadow-sm transition-all duration-300 hover:shadow-xl">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A gourmet donut with a glossy dark chocolate glaze topped with gold leaf flakes and roasted hazelnuts. The setting is a bright, high-key minimalist space with soft shadows. The lighting emphasizes the rich, reflective texture of the chocolate and the metallic sparkle of the gold, evoking a mood of sophisticated luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDinQ6YgOBdzbBOhwS-akMyXqkDjNJLkUax0l739vQlARq2JXkTeqPG_kLpj2yk0T-gZSEbZwSIX_poF9hPt-VCRz8mngcMD_XJqh5q21s986MVuGppPIuHZJTBwIASFRA4vRnZpPJtuupfr0x3sPjFaMu0Cgb1bDUiwCOKAFhYIz1aLfo21cdc0fsVT7RmOLKlYnaSYmir9dg0XTnOrOD66RbpKYCSQYuQSPel7gXr9BpOpQxctlugU8OwwAcAXLpluGnVAM5teAI"/>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
-<span class="material-symbols-outlined">add_shopping_cart</span>
+<button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
+    <span class="material-symbols-outlined">add_shopping_cart</span>
 </button>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-headline-md text-on-surface">Oro Negro Chocolat</h4>
-<p class="text-sm text-secondary">Cacao 70%, avellanas y pan de oro.</p>
+<h4 class="font-headline-md text-on-surface dark:text-slate-100" data-i18n="prod_1_name">Oro Negro Chocolat</h4>
+<p class="text-sm text-secondary dark:text-slate-400" data-i18n="prod_1_desc">Cacao 70%, avellanas y pan de oro.</p>
 </div>
 <p class="text-primary font-bold text-lg">$5.50</p>
 </div>
 </div>
 <!-- Product 2 -->
 <div class="group">
-<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low relative shadow-sm transition-all duration-300 hover:shadow-xl">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An exquisite artisanal donut featuring a vibrant raspberry pink glaze with a crown of fresh forest berries and a dusting of powdered sugar. The image is shot in a bright, modern light-mode studio setting, emphasizing clean lines and white space. The overall mood is refreshing, organic, and appetizingly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGm-afGKStDkcGdqCoP0Y1CcZFCE2yC7ucN053mZdX_ZyrGB3XWuYvYg8rlAzaRcn7y-lyb7y9DTq5vT2s8kq2GSh6axn614T5BrgCjUjHR2sDZ_7Oenh9wQZuIljfFJPBG-3T1vOg1eg-89aEafaro9NcV12rDg4xHPGaXAQpilFCsNXB_H-vzilo9bxKMao1ip4Vb9nZCX9bQA0oU0Ga6Qa_Yr_PVLOHhw1slqSbEDt1oYH5bWcwQjKGqpRgXP05Pdgp1JXBJw4"/>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
-<span class="material-symbols-outlined">add_shopping_cart</span>
+<button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
+    <span class="material-symbols-outlined">add_shopping_cart</span>
 </button>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-headline-md text-on-surface">Frutos del Bosque</h4>
-<p class="text-sm text-secondary">Glaseado de frambuesa y berries frescos.</p>
+<h4 class="font-headline-md text-on-surface dark:text-slate-100" data-i18n="prod_2_name">Frutos del Bosque</h4>
+<p class="text-sm text-secondary dark:text-slate-400" data-i18n="prod_2_desc">Glaseado de frambuesa y berries frescos.</p>
 </div>
 <p class="text-primary font-bold text-lg">$4.75</p>
 </div>
 </div>
 <!-- Product 3 -->
 <div class="group">
-<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low relative shadow-sm transition-all duration-300 hover:shadow-xl">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist photograph of a classic vanilla bean donut with a smooth, translucent glaze and speckles of real vanilla. The lighting is bright and high-key, creating a clean white aesthetic. The pastry looks incredibly soft and pillowy, set against a soft Glaze Cream backdrop with very subtle ambient shadows for depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2_w1MpIVrRNinVUlDxyVEmD6o7Fkz7dQxzcTKMNAr6KAIeBdNf_4RK3iKFB3UzBRypKTN4NabWw-eRsKQ5iF8Rdgd6FgSgSUVCBcnCBHPbteEbxm8P2Nks3ElRLORe3k5c4ux2DI6HGf9FoQpdmvuyNsvmrfZFkkt3aEB2fq3tj1l8GFceEerEJZeVwAR2jde-3oNfZO44W-dZe4bQmUY3lv9JZ2_7e6PVjLni5KVH_edXfH1FjSf0q_wrWeGXzz299t6vmg9vbE"/>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
-<span class="material-symbols-outlined">add_shopping_cart</span>
+<button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
+    <span class="material-symbols-outlined">add_shopping_cart</span>
 </button>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-headline-md text-on-surface">Vainilla Madagáscar</h4>
-<p class="text-sm text-secondary">Vaina de vainilla auténtica y azúcar pura.</p>
+<h4 class="font-headline-md text-on-surface dark:text-slate-100" data-i18n="prod_3_name">Vainilla Madagáscar</h4>
+<p class="text-sm text-secondary dark:text-slate-400" data-i18n="prod_3_desc">Vaina de vainilla auténtica y azúcar pura.</p>
 </div>
 <p class="text-primary font-bold text-lg">$3.90</p>
 </div>
 </div>
 <!-- Product 4 (Vegan) -->
 <div class="group">
-<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low relative shadow-sm transition-all duration-300 hover:shadow-xl">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A beautifully crafted vegan donut with a matcha green tea glaze and a sprinkle of toasted sesame seeds. The setting is a minimalist gallery-like space with soft, natural lighting. The color palette features soothing greens and clean whites, reflecting a serene and health-conscious artisanal vibe that is modern and polished." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV15OIxFC6eevI_LabsyCSKi4O7pfp5EQhCPN63UY8QSr0cg9Jrb9pwFjs1WTGRYyo1rokDT3uvCiXWkLtsZqDLPVFbX-dgMadhKTTH6UAybZBUs55d9nyY01Nv9ZvGmbp9DY_UG5TeXdrgj5OV4bOhpMRnWzWUNo7YH1n7qYar5g2IM1RShKjth45d8Bg3dAhwkaRLClr6PZ1eRrNJwOr_3yaRi77BeU8iOM0qHFhVJMg3tlRyzaiS74dp20ZaPWq2JW9w5aF02w"/>
 <span class="absolute top-4 left-4 bg-tertiary text-on-tertiary text-[10px] font-bold px-3 py-1 rounded-full">VEGANA</span>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
-<span class="material-symbols-outlined">add_shopping_cart</span>
+<button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
+    <span class="material-symbols-outlined">add_shopping_cart</span>
 </button>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-headline-md text-on-surface">Zen Matcha</h4>
-<p class="text-sm text-secondary">Matcha orgánico y semillas de sésamo.</p>
+<h4 class="font-headline-md text-on-surface dark:text-slate-100" data-i18n="prod_4_name">Zen Matcha</h4>
+<p class="text-sm text-secondary dark:text-slate-400" data-i18n="prod_4_desc">Matcha orgánico y semillas de sésamo.</p>
 </div>
 <p class="text-primary font-bold text-lg">$4.50</p>
 </div>
 </div>
 <!-- Product 5 -->
 <div class="group">
-<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low relative shadow-sm transition-all duration-300 hover:shadow-xl">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A decadent artisanal donut filled with smooth pistachio cream and topped with crushed pistachios and a honey drizzle. The lighting is warm and directional, casting soft shadows that give the pastry a tactile, three-dimensional look. The style is approachable luxury, using a palette of golden honey and clean white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXMKkk9Z60v31OZnnBjnj_PZQsAhf0ALZfVxHbqhpqpoCy8ZImSoAoFEo-nWJUK22nrAGWsv7xKt7bhHkmM8vckmvP2OWAhthPJsC9ldCnROt17gzBSAG9QK4mVi1PSI8VoqVRaL02I_zHLjqiCCfvzhpJXkK3LQshB9xr4nsdPEJZHTf5WSlk-0Mvr0LeMQnjKyGK9aDBQLWeG7pAgAXY7rzF_5RAydHGUAuMCbdVfBDkF6TTH7KuWLtFjTlPMfBOAO8rtvlm65A"/>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
-<span class="material-symbols-outlined">add_shopping_cart</span>
+<button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
+    <span class="material-symbols-outlined">add_shopping_cart</span>
 </button>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-headline-md text-on-surface">Pistacho Real</h4>
-<p class="text-sm text-secondary">Relleno de crema de pistacho siciliano.</p>
+<h4 class="font-headline-md text-on-surface dark:text-slate-100" data-i18n="prod_5_name">Pistacho Real</h4>
+<p class="text-sm text-secondary dark:text-slate-400" data-i18n="prod_5_desc">Relleno de crema de pistacho siciliano.</p>
 </div>
 <p class="text-primary font-bold text-lg">$5.25</p>
 </div>
 </div>
 <!-- Product 6 -->
 <div class="group">
-<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low relative shadow-sm transition-all duration-300 hover:shadow-xl">
+<div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A gourmet donut with a lemon zest glaze and toasted meringue peaks, creating a sculptural and delicious appearance. The photography is high-key and bright, with a minimalist aesthetic that focuses on the organic, pillowy shape of the donut. The atmosphere is light and refreshing, with vibrant yellow and pristine white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnm6ceM77rq_EpvzXqPBt7E3E5OkQT8Zvbbbnh5hhD8DS_TpTdvKbxrrrbOvzPHBKl4LmylPs1p9Sv7Sw6sygs1J5c_-PHDH7pEsN2SKx2Jn1hV5kthhOvoY_ZPtjw_-GMhWIVj9mtPjd-m38W_esKJzs4SJQme0hXZrq77aaNdXULbHNd2kNDZ3iop7qk_-f5ANPR7yLZgBw26IS0VpsVG59MaGtU1Q4ldjpx1fXNwHBpjAlgoOm1V1x5DlKn-ru8XXE-OhRt64E"/>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
-<span class="material-symbols-outlined">add_shopping_cart</span>
+<button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
+    <span class="material-symbols-outlined">add_shopping_cart</span>
 </button>
 </div>
 <div class="flex justify-between items-start">
 <div>
-<h4 class="font-headline-md text-on-surface">Lemon Meringue</h4>
-<p class="text-sm text-secondary">Zeste de limón y merengue tostado.</p>
+<h4 class="font-headline-md text-on-surface dark:text-slate-100" data-i18n="prod_6_name">Lemon Meringue</h4>
+<p class="text-sm text-secondary dark:text-slate-400" data-i18n="prod_6_desc">Zeste de limón y merengue tostado.</p>
 </div>
 <p class="text-primary font-bold text-lg">$4.95</p>
 </div>
@@ -312,41 +295,180 @@
 </div>
 </section>
 <!-- Newsletter / Community Section -->
-<section class="mt-32 p-12 bg-surface-container rounded-lg text-center overflow-hidden relative">
+<section class="mt-32 p-12 bg-surface-container dark:bg-slate-900 rounded-lg text-center overflow-hidden relative border border-transparent dark:border-slate-800">
 <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
 <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-tertiary/10 rounded-full blur-3xl"></div>
 <div class="relative z-10">
-<h2 class="font-display-lg text-primary mb-4">Únete al Gilded Club</h2>
-<p class="text-secondary mb-8 max-w-md mx-auto">Recibe invitaciones a catas exclusivas y lanzamientos de nuevos sabores antes que nadie.</p>
+<h2 class="font-display-lg text-primary mb-4" data-i18n="gilded_club">Únete al Gilded Club</h2>
+<p class="text-secondary dark:text-slate-400 mb-8 max-w-md mx-auto" data-i18n="newsletter_desc_menu">Recibe invitaciones a catas exclusivas y lanzamientos de nuevos sabores antes que nadie.</p>
 <div class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-<input class="flex-grow px-6 py-4 rounded-full border-none bg-white focus:ring-2 focus:ring-primary outline-none" placeholder="Tu correo electrónico" type="email"/>
-<button class="px-8 py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg hover:scale-105 transition-transform active:scale-95">Suscribirme</button>
+<input class="flex-grow px-6 py-4 rounded-full border-none bg-white dark:bg-slate-950 dark:text-slate-200 focus:ring-2 focus:ring-primary outline-none" placeholder="Tu correo electrónico" type="email"/>
+<button class="px-8 py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg hover:scale-105 transition-transform active:scale-95" data-i18n="btn_subscribe">Suscribirme</button>
 </div>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full py-12 mt-20 border-t border-zinc-200 bg-zinc-100 font-sans text-sm text-zinc-500">
-<div class="flex flex-col md:flex-row justify-between items-center px-8 md:px-24 w-full max-w-container-max mx-auto">
+<footer class="w-full py-12 mt-20 border-t border-zinc-200 dark:border-slate-800 bg-zinc-100 dark:bg-slate-950 font-sans text-sm text-zinc-500 dark:text-slate-400">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 md:px-24 w-full max-w-7xl mx-auto">
 <div class="mb-8 md:mb-0">
-<div class="font-serif text-lg text-zinc-900 mb-2">Glazed &amp; Gilded</div>
-<p>© 2024 Glazed &amp; Gilded Artisanal Patisserie.</p>
+<div class="font-headline-md text-primary mb-2">Sweet Donuts</div>
+<p>© 2024 Sweet Donuts Artisanal Patisserie.</p>
 </div>
 <div class="flex flex-wrap justify-center gap-8 text-zinc-600">
-<a class="hover:text-pink-500 transition-colors" href="#">Privacy Policy</a>
-<a class="hover:text-pink-500 transition-colors" href="#">Terms of Service</a>
-<a class="hover:text-pink-500 transition-colors" href="#">Shipping Info</a>
-<a class="hover:text-pink-500 transition-colors" href="#">Wholesale</a>
+<a class="hover:text-pink-500 transition-colors" href="#" data-i18n="footer_privacy">Privacy Policy</a>
+<a class="hover:text-pink-500 transition-colors" href="#" data-i18n="footer_terms">Terms of Service</a>
+<a class="hover:text-pink-500 transition-colors" href="#" data-i18n="footer_shipping">Shipping Info</a>
+<a class="hover:text-pink-500 transition-colors" href="#" data-i18n="footer_wholesale">Wholesale</a>
 </div>
-<div class="mt-8 md:mt-0 flex gap-4">
+<div class="mt-8 md:mt-0 flex gap-4 text-zinc-400">
 <span class="material-symbols-outlined text-zinc-400 hover:text-primary transition-colors cursor-pointer" data-icon="facebook">social_leaderboard</span>
 <span class="material-symbols-outlined text-zinc-400 hover:text-primary transition-colors cursor-pointer" data-icon="instagram">retweet</span>
 </div>
 </div>
 </footer>
 <!-- FAB Cart (Mobile only) -->
-<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50">
+<button id="cart-toggle-mobile" class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50">
 <span class="material-symbols-outlined">shopping_bag</span>
 <span class="absolute -top-1 -right-1 w-6 h-6 bg-[#FFD700] text-black text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-primary">2</span>
 </button>
+
+<script>
+    const $ = (id) => document.getElementById(id);
+    const htmlElement = document.documentElement;
+    const cartSidebar = $('cart-sidebar');
+    const closeCartBtn = $('close-cart');
+    const openCartBtns = [$('cart-toggle'), $('cart-toggle-mobile')];
+
+
+// =======================
+// 🧁 CARRITO DINÁMICO
+// =======================
+    let carrito = [];
+    const cartContainer = document.querySelector("#cart-sidebar .flex-grow");
+    const totalElement = document.querySelector("#cart-sidebar .font-bold span:last-child");
+    const badges = document.querySelectorAll(".cart-badge");
+
+    openCartBtns.forEach(btn => btn?.addEventListener('click', () => cartSidebar.classList.remove('translate-x-full')));
+    closeCartBtn.addEventListener('click', () => cartSidebar.classList.add('translate-x-full'));
+
+// =======================
+// ➕ AGREGAR PRODUCTOS
+// =======================
+document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        const card = btn.closest(".group");
+        const nombre = card.querySelector("h4").innerText;
+        const precio = card.querySelector("p.text-primary").textContent;
+        carrito.push({ nombre, precio });
+
+        renderCarrito();
+    });
+});
+
+
+// =======================
+// 🎨 RENDER
+// =======================
+function renderCarrito() {
+    cartContainer.innerHTML = "";
+    let total = 0;
+    carrito.forEach((item, index) => {
+        const priceNumber = parseFloat(item.precio.replace("$",""));
+        total += priceNumber;
+        const div = document.createElement("div");
+        div.className = "pt-4 flex gap-4 items-center";
+
+        div.innerHTML = `
+            <div class="flex-grow">
+                <p class="font-semibold text-primary dark:text-pink-300">${item.nombre}</p>
+                <p class="text-sm text-zinc-500 dark:text-slate-400">${item.precio}</p>
+            </div>
+            <button onclick="eliminar(${index})" class="material-symbols-outlined text-red-400">delete</button>
+        `;
+
+        cartContainer.appendChild(div);
+    });
+
+    totalElement.textContent = "$" + total.toFixed(2);
+    badges.forEach(b => b.textContent = carrito.length);
+}
+renderCarrito();
+
+// =======================
+// ❌ ELIMINAR
+// =======================
+function eliminar(index) {
+    carrito.splice(index, 1);
+    renderCarrito();
+}
+
+    // --- THEME & LANGUAGE ---
+    const themeToggle = $('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.material-symbols-outlined');
+    const langToggle = $('lang-toggle');
+    let currentLang = localStorage.getItem('language') || 'es';
+
+    const translations = {
+        es: {
+            nav_historia: "Historia", nav_menu: "Menú", nav_testimonios: "Testimonios", nav_ubicacion: "Ubicación",
+            cart_title: "Tu Selección", cart_subtitle: "Dulzuras artesanales esperando", cart_total: "Total", btn_checkout: "Proceder al Pago",
+            menu_page_title: "Nuestro Menú Artesanal", menu_page_desc: "Cada donut es una obra de arte, creada a mano con ingredientes locales.",
+            cat_all: "Todas", cat_classics: "Clásicas", cat_premium: "Premium", cat_filled: "Rellenas", cat_vegan: "Veganas",
+            promo_title: "Promociones Especiales", promo_box_title: "Caja de 6 Unidades", promo_box_desc: "Elige tus favoritas y ahorra un 20%",
+            promo_duo_title: "Dúo Café + Donut", promo_duo_desc: "El maridaje perfecto para tu mañana.", btn_want_it: "Lo quiero",
+            chef_selection: "Selección del Chef", filter_price: "Filtrar por precio",
+            prod_1_name: "Oro Negro Chocolat", prod_1_desc: "Cacao 70%, avellanas y pan de oro.",
+            prod_2_name: "Frutos del Bosque", prod_2_desc: "Glaseado de frambuesa y berries frescos.",
+            prod_3_name: "Vainilla Madagáscar", prod_3_desc: "Vaina de vainilla auténtica y azúcar pura.",
+            prod_4_name: "Zen Matcha", prod_4_desc: "Matcha orgánico y semillas de sésamo.",
+            prod_5_name: "Pistacho Real", prod_5_desc: "Relleno de crema de pistacho siciliano.",
+            prod_6_name: "Lemon Meringue", prod_6_desc: "Zeste de limón y merengue tostado.",
+            gilded_club: "Únete al Gilded Club", newsletter_desc_menu: "Recibe invitaciones a catas exclusivas.", btn_subscribe: "Suscribirme",
+            footer_privacy: "Privacidad", footer_terms: "Términos", footer_shipping: "Envíos", footer_wholesale: "Mayoreo"
+        },
+        en: {
+            nav_historia: "History", nav_menu: "Menu", nav_testimonios: "Testimonials", nav_ubicacion: "Location",
+            cart_title: "Your Selection", cart_subtitle: "Artisanal treats awaiting", cart_total: "Total", btn_checkout: "Checkout",
+            menu_page_title: "Our Artisanal Menu", menu_page_desc: "Each donut is a work of art, hand-crafted with local ingredients.",
+            cat_all: "All", cat_classics: "Classics", cat_premium: "Premium", cat_filled: "Filled", cat_vegan: "Vegan",
+            promo_title: "Special Promotions", promo_box_title: "Box of 6 Units", promo_box_desc: "Choose your favorites and save 20%",
+            promo_duo_title: "Coffee + Donut Duo", promo_duo_desc: "The perfect pairing for your morning.", btn_want_it: "I want it",
+            chef_selection: "Chef's Selection", filter_price: "Filter by price",
+            prod_1_name: "Black Gold Chocolat", prod_1_desc: "70% Cocoa, hazelnuts and gold leaf.",
+            prod_2_name: "Forest Fruits", prod_2_desc: "Raspberry glaze and fresh berries.",
+            prod_3_name: "Madagascar Vanilla", prod_3_desc: "Authentic vanilla bean and pure sugar.",
+            prod_4_name: "Zen Matcha", prod_4_desc: "Organic matcha and sesame seeds.",
+            prod_5_name: "Royal Pistachio", prod_5_desc: "Filled with Sicilian pistachio cream.",
+            prod_6_name: "Lemon Meringue", prod_6_desc: "Lemon zest and toasted meringue.",
+            gilded_club: "Join the Gilded Club", newsletter_desc_menu: "Receive invitations to exclusive tastings.", btn_subscribe: "Subscribe",
+            footer_privacy: "Privacy", footer_terms: "Terms", footer_shipping: "Shipping", footer_wholesale: "Wholesale"
+        }
+    };
+
+    const updateTheme = (isDark) => {
+        htmlElement.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeIcon.innerText = isDark ? 'light_mode' : 'dark_mode';
+    };
+
+    const applyTranslations = (lang) => {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+    };
+
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) updateTheme(true);
+    themeToggle.addEventListener('click', () => updateTheme(!htmlElement.classList.contains('dark')));
+
+    applyTranslations(currentLang);
+
+    langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        localStorage.setItem('language', currentLang);
+        applyTranslations(currentLang);
+    });
+</script>
 </body></html>
