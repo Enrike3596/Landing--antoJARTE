@@ -111,7 +111,7 @@
 <a class="text-2xl font-headline-lg font-bold text-primary dark:text-[#FF4081]" href="#">Sweet Donuts</a>
 <div class="hidden md:flex items-center gap-8">
 <a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#historia" data-i18n="nav_historia">Historia</a>
-<a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#menu" data-i18n="nav_menu">Menú</a>
+<a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="menu.html" data-i18n="nav_menu">Menú</a>
 <a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#testimonios" data-i18n="nav_testimonios">Testimonios</a>
 <a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#ubicacion" data-i18n="nav_ubicacion">Ubicación</a>
 </div>
@@ -141,7 +141,11 @@
 <h1 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 leading-tight" data-i18n="hero_title">El Arte de la <span class="text-primary italic">Dulzura</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant dark:text-slate-400 max-w-lg" data-i18n="hero_desc">Descubre donuts de autor elaboradas cada mañana con ingredientes premium y un toque de pasión artesanal. Una experiencia de lujo para los paladares más exigentes.</p>
 <div class="flex flex-wrap gap-4">
-<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm shadow-lg hover:shadow-xl transition-all active:scale-95" data-i18n="btn_view_menu">Ver el Menú</button>
+<a href="menu.html" 
+   class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm shadow-lg hover:shadow-xl transition-all active:scale-95 inline-block text-center"
+   data-i18n="btn_view_menu">
+   Ver el Menú
+</a>
 <button class="bg-white border border-primary text-primary px-8 py-4 rounded-full font-label-sm hover:bg-surface-container-low transition-all active:scale-95" data-i18n="btn_our_history">Nuestra Historia</button>
 </div>
 </div>
@@ -197,7 +201,6 @@
 <span class="text-primary font-bold text-headline-md">4.50€</span>
 </div>
 <p class="text-on-surface-variant dark:text-slate-400 font-body-md mb-4 italic">Infusión de lavanda francesa, chocolate blanco belga y ralladura de limón.</p>
-<button class="w-full py-3 border border-primary/30 dark:border-pink-500/50 text-primary dark:text-pink-300 rounded-full font-label-sm group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors" data-i18n="btn_add">Añadir al pedido</button>
 </div>
 <!-- Card 2 -->
 <div class="group bg-surface-container-lowest p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
@@ -209,7 +212,6 @@
 <span class="text-primary font-bold text-headline-md">4.20€</span>
 </div>
 <p class="text-on-surface-variant dark:text-slate-400 font-body-md mb-4 italic">Toffee artesanal con flor de sal de Guérande y trocitos de nuez pecana.</p>
-<button class="w-full py-3 border border-primary/30 dark:border-pink-500/50 text-primary dark:text-pink-300 rounded-full font-label-sm group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors" data-i18n="btn_add">Añadir al pedido</button>
 </div>
 <!-- Card 3 -->
 <div class="group bg-surface-container-lowest p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
@@ -221,7 +223,6 @@
 <span class="text-primary font-bold text-headline-md">4.80€</span>
 </div>
 <p class="text-on-surface-variant dark:text-slate-400 font-body-md mb-4 italic">Glaseado de hibisco natural, frambuesas liofilizadas y un toque de oro comestible.</p>
-<button class="w-full py-3 border border-primary/30 dark:border-pink-500/50 text-primary dark:text-pink-300 rounded-full font-label-sm group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors" data-i18n="btn_add">Añadir al pedido</button>
 </div>
 </div>
 </div>
@@ -410,7 +411,7 @@
             history_p2: "En Sweet Donuts, cada pieza es el resultado de 48 horas de fermentación lenta y una selección rigurosa de harinas orgánicas y frutos de temporada.",
             stat_natural: "Ingredientes Naturales", stat_handmade: "Artesanía Diaria",
             menu_title: "El Menú de Autor", menu_desc: "Nuestra colección permanente y las ediciones limitadas del mes.",
-            btn_add: "Añadir al pedido", testimonials_title: "Experiencias de nuestros clientes",
+            testimonials_title: "Experiencias de nuestros clientes",
             visit_title: "Visítanos", visit_desc: "Estamos ubicados en el emblemático barrio del diseño, un espacio acogedor.",
             addr_label: "Dirección", addr_val: "Calle de la Dulzura 42, 28004 Madrid", btn_directions: "Cómo llegar",
             footer_slogan: "Artesanía y lujo en cada bocado. Redefiniendo el placer desde 2020.",
