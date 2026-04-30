@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#89faa8",
+                    "surface-container-highest": "#fadbde",
+                    "inverse-primary": "#ffb2be",
+                    "surface-container": "#ffe9ea",
+                    "primary-fixed": "#ffd9de",
+                    "on-secondary-fixed": "#1d1b16",
+                    "on-primary-fixed-variant": "#900038",
+                    "surface": "#fff8f7",
+                    "background": "#fff8f7",
+                    "tertiary-fixed-dim": "#6ddd8e",
+                    "outline": "#8f6f73",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#3e2b2e",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#fff0f1",
+                    "surface-dim": "#f1d3d6",
+                    "on-tertiary-container": "#f6fff3",
+                    "on-surface-variant": "#5b3f43",
+                    "inverse-on-surface": "#ffecee",
+                    "secondary-container": "#e7e2d9",
+                    "secondary": "#615e57",
+                    "on-secondary-fixed-variant": "#494640",
+                    "secondary-fixed": "#e7e2d9",
+                    "primary-fixed-dim": "#ffb2be",
+                    "on-tertiary-fixed-variant": "#005227",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#cbc6bd",
+                    "on-secondary-container": "#67645d",
+                    "primary": "#b80049",
+                    "on-surface": "#28171a",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fff8f7",
+                    "on-tertiary-fixed": "#00210c",
+                    "outline-variant": "#e4bdc2",
+                    "tertiary-container": "#008644",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#400014",
+                    "error": "#ba1a1a",
+                    "tertiary": "#006a34",
+                    "primary-container": "#e2165f",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#fffbff",
+                    "surface-container-high": "#ffe1e4",
+                    "on-background": "#28171a",
+                    "surface-variant": "#fadbde",
+                    "surface-tint": "#bc004b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "40px",
+                    "container-max": "1200px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Noto Serif"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Noto Serif"],
+                    "display-lg": ["Noto Serif"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background dark:bg-slate-950 font-body-md text-on-background dark:text-slate-200 selection:bg-primary-container selection:text-on-primary-container transition-colors duration-500">
+<!-- TopNavBar Section -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/20 dark:border-slate-800 glass-effect bg-white/70 dark:bg-slate-900/70 shadow-sm">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<a class="text-2xl font-headline-lg font-bold text-primary dark:text-[#FF4081]" href="#">Sweet Donuts</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#historia" data-i18n="nav_historia">Historia</a>
+<a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#menu" data-i18n="nav_menu">Menú</a>
+<a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#testimonios" data-i18n="nav_testimonios">Testimonios</a>
+<a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#ubicacion" data-i18n="nav_ubicacion">Ubicación</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button id="lang-toggle" class="p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300" data-icon="language">language</span>
+</button>
+<button id="theme-toggle" class="p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2 rounded-full font-label-sm shadow-md transition-all active:scale-95" data-i18n="btn_order">
+    Pedir Ahora
+</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0 bg-white dark:bg-slate-950">
+<img class="w-full h-full object-cover opacity-10" data-alt="A macro photography shot of a gourmet donut with glossy strawberry glaze and golden flakes, resting on a clean white ceramic plate. The lighting is soft and high-key, emphasizing the airy texture of the dough. The overall aesthetic is minimalist and luxurious, using a palette of soft berry pinks and warm glazes that feel appetizing and sophisticated for a high-end patisserie website." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy-mllUl2-MA23Yc6ZgxCSVhvYQSGXHO3sg-LVWq-meU7W-hSlHYSL9_icjKtXbXNol8nFpcjG59ZMdDMj-QjGgM8zWFzmuJ2r0NtgTMEHoMZC4EzVy--gGgSPDgfz-35zvyhCmhWZFYHTHCdM0zRu6hJPn_kOSGnjcuhF73rKRhs5Y3LOEyJq0bX28fasjnppRodR9iYNCceslvG7nLoe7rH__wnRthqdEyEeQNOH5cVLFoisRthaxr-1JmyGGDDzRj9SxwIxX_c"/>
+</div>
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 items-center gap-16 relative z-10">
+<div class="space-y-8">
+<span class="bg-surface-container-highest dark:bg-pink-900/30 text-primary dark:text-pink-300 px-4 py-1.5 rounded-full text-label-sm uppercase tracking-widest" data-i18n="hero_badge">Artesanía Pura</span>
+<h1 class="font-display-lg text-display-lg text-on-surface dark:text-slate-100 leading-tight" data-i18n="hero_title">El Arte de la <span class="text-primary italic">Dulzura</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant dark:text-slate-400 max-w-lg" data-i18n="hero_desc">Descubre donuts de autor elaboradas cada mañana con ingredientes premium y un toque de pasión artesanal. Una experiencia de lujo para los paladares más exigentes.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm shadow-lg hover:shadow-xl transition-all active:scale-95" data-i18n="btn_view_menu">Ver el Menú</button>
+<button class="bg-white border border-primary text-primary px-8 py-4 rounded-full font-label-sm hover:bg-surface-container-low transition-all active:scale-95" data-i18n="btn_our_history">Nuestra Historia</button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute inset-0 bg-primary/10 blur-[100px] rounded-full"></div>
+<img class="relative z-10 w-full h-auto drop-shadow-2xl rounded-xl" data-alt="A close-up vertical shot of three vertically stacked artisanal donuts. One is glazed in a deep berry pink with dried rose petals, another in a golden honey glaze with slivered almonds, and the top one with a glossy chocolate finish. The background is a soft, out-of-focus cream color, creating a warm and elegant atmosphere consistent with the brand's premium identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvWhhSE7CdeFazSJLjlnX27ODo9BoDMH9QAe1gJ9-IeSjalskKxMNwwzsA99SJbo7ioAA3YwGgtJiucCDXm3At7ay9d15_AX08F0WsQUyCBM673GYytWuxGpDldmYLulHf0C8PDZyRXsGmWOlBxGrLeM7g_XpsWsyqn58zxDDXktDtgRGIi3YVYJ2jWcBxvz_oLo6iPFXlZfAi9BAp75e-6wbESajbtEnduBz7R09hXJVMyFsumvLztrxV3u4wmRr-osgSETR3nPs"/>
+</div>
+</div>
+</section>
+<!-- Historia Section -->
+<section class="py-24 bg-surface-container-low dark:bg-slate-900 transition-colors duration-500" id="historia">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1 relative h-[500px]">
+<img class="w-full h-full object-cover rounded-lg shadow-2xl" data-alt="A nostalgic yet clean photograph of a baker's hands dusting flour onto a wooden countertop in a sunlit artisanal bakery. Fine particles of flour are captured in the warm, golden light coming through a large window. The scene evokes tradition, craftsmanship, and the handmade quality of Sweet Donuts, set in a modern minimalist kitchen environment with natural wood accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCr995r7fksPu_V_UL7rMDm5KgBX-yWgR-1sbKoahIVPTpWHoHEqfPyYqWgJeqFb5XWvs1dr2BGtDfq66-OIi3TS3bf8i_FZSNaDFFfYpabCtrePw7YTH3YSx2pi0Upw-Mz4nzJJ2atALtOTJkQ-oY1TE6BQdo0Ye7-m4AbSMtxHXJ4hRo-HcbfUYsI8vR93jTdDybCq7thTnQqJW4pG9q3xH1OKL0MCSqve7MHrhQBG9LqGStOI4PGXF6IEDATI-b2fV1-15toW4"/>
+<div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 p-8 rounded-lg shadow-xl hidden lg:block">
+<p class="font-headline-md text-primary" data-i18n="history_date">Desde 2020</p>
+<p class="text-on-surface-variant font-label-sm" data-i18n="history_date_desc">Perfeccionando la receta</p>
+</div>
+</div>
+<div class="order-1 md:order-2 space-y-6">
+<h2 class="font-headline-lg text-headline-lg text-on-surface dark:text-slate-100" data-i18n="history_title">Nuestra Historia</h2>
+<div class="h-1 w-20 bg-primary rounded-full"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant dark:text-slate-300" data-i18n="history_p1">Nacimos en el corazón de la ciudad con un propósito claro: elevar la donut tradicional a la categoría de alta pastelería.</p>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400" data-i18n="history_p2">En Sweet Donuts, cada pieza es el resultado de 48 horas de fermentación lenta y una selección rigurosa de harinas orgánicas y frutos de temporada. No solo vendemos dulces, compartimos una tradición reinventada con elegancia y pasión.</p>
+<div class="pt-4 grid grid-cols-2 gap-8">
+<div>
+<span class="block text-4xl font-headline-lg text-primary">100%</span>
+<span class="text-label-sm text-on-surface-variant dark:text-slate-400" data-i18n="stat_natural">Ingredientes Naturales</span>
+</div>
+<div>
+<span class="block text-4xl font-headline-lg text-primary">Hand-made</span>
+<span class="text-label-sm text-on-surface-variant dark:text-slate-400" data-i18n="stat_handmade">Artesanía Diaria</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Menú Section -->
+<section class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500" id="menu">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center space-y-4 mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface dark:text-slate-100" data-i18n="menu_title">El Menú de Autor</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto" data-i18n="menu_desc">Nuestra colección permanente y las ediciones limitadas del mes.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="overflow-hidden rounded-lg mb-6 aspect-square bg-surface-container dark:bg-slate-800">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A gourmet donut glazed with a lavender-infused white chocolate, topped with delicate dried lavender buds and edible silver leaf. The donut sits on a clean, light pink marble surface under soft, diffuse lighting. The photography style is minimalist and high-end, focusing on the intricate textures and the sophisticated berry-pink and cream color scheme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkVXqGp-U0pSTKNH332797gnESKM6og7HNQgDsSHZumgzFa0ZXVE7DQrzyXgY8IV7YYeQ1i0FGDusEZdKwZf30BvETIOlMUOe9v0EVFlXPhBEwZ9MXQJDIJPS3qW0cacJNg7ppjuYDoKuXTArVrm8JGHDAb8V-2Z4-_yFqog28Wy2Z_jCa_sW5k4FIRnt451dY1CN7aBxOLGmO_LMeSpC41XvNx93ZJYN5dYMq6syVl07jZMUMdF0J5yrSCfHfySRYXNF9XoaVJmM"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface dark:text-slate-100">Flor de Lavanda</h3>
+<span class="text-primary font-bold text-headline-md">4.50€</span>
+</div>
+<p class="text-on-surface-variant dark:text-slate-400 font-body-md mb-4 italic">Infusión de lavanda francesa, chocolate blanco belga y ralladura de limón.</p>
+<button class="w-full py-3 border border-primary/30 dark:border-pink-500/50 text-primary dark:text-pink-300 rounded-full font-label-sm group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors" data-i18n="btn_add">Añadir al pedido</button>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="overflow-hidden rounded-lg mb-6 aspect-square bg-surface-container dark:bg-slate-800">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artisanal donut with a salted caramel glaze, topped with crushed roasted pecans and a drizzle of golden honey. The lighting is warm and directional, creating soft shadows that emphasize the pillowy dough. The background is a clean, minimalist off-white, maintaining the brand's 'Artisanal Indulgence' aesthetic and sophisticated color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTROFpq8R03W1AA9HzbpxcSQP5k_08onJnTNcSl4-2HiXBL8ChHWI-B5Yk6sOrFMRuJqe_YkS9snEUgeziq_NiqWmfkUMzg1wzdf9aT2UryhieJa1bhCkyy53npYdACpA0kIkpp25iGx2nsZyMzFopZYK0ODhXf5NjWGF5yufBSFUQEZtwJbi1J1ynXvt4np3M1JlnlW6UbmH2kjDkFEVPAjpT-sQa-fUfGYnIWPt2j_NDYB5CtBIZZrQev3YJxPXxiN-_ob9DEi8"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface dark:text-slate-100">Caramelo Salado</h3>
+<span class="text-primary font-bold text-headline-md">4.20€</span>
+</div>
+<p class="text-on-surface-variant dark:text-slate-400 font-body-md mb-4 italic">Toffee artesanal con flor de sal de Guérande y trocitos de nuez pecana.</p>
+<button class="w-full py-3 border border-primary/30 dark:border-pink-500/50 text-primary dark:text-pink-300 rounded-full font-label-sm group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors" data-i18n="btn_add">Añadir al pedido</button>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="overflow-hidden rounded-lg mb-6 aspect-square bg-surface-container dark:bg-slate-800">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant hibiscus-glazed donut with a dusting of freeze-dried raspberries and a single small edible gold flake. The donut is presented on a minimalist glass pedestal. The colors are bright yet sophisticated, with the deep pink of the glaze popping against the clean, blurred-out cream background. High-key lighting creates a delicious and airy feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcMHL-Hxudcy6OxmyILqwyiHop4rYjm_M4wU3QoO975CnuJfX3vNmj7uYLNt7hz87CLz4iDn5QfPZLLPjV417pQbM1WvR1slPBRLkmQsAwvhTdG28eLi6yjqvNjcN1GQCUE2JPgIaCAgtVwSzJsDete2DbovlRAuHWsVRdJHKBcx4Phcw2E_eEH5jy69ZLfpI1d5ywjX_dFUvfZMs4KddcI6RYYGS_Tp7vIeIfSnFIB0oEh_Q7DxqF58FzjGYoVNuD7FAU5mB0lqI"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface dark:text-slate-100">Hibiscus &amp; Pink</h3>
+<span class="text-primary font-bold text-headline-md">4.80€</span>
+</div>
+<p class="text-on-surface-variant dark:text-slate-400 font-body-md mb-4 italic">Glaseado de hibisco natural, frambuesas liofilizadas y un toque de oro comestible.</p>
+<button class="w-full py-3 border border-primary/30 dark:border-pink-500/50 text-primary dark:text-pink-300 rounded-full font-label-sm group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors" data-i18n="btn_add">Añadir al pedido</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonios Section -->
+<section class="py-24 bg-surface-container dark:bg-slate-900 transition-colors duration-500" id="testimonios">
+<div class="max-w-7xl mx-auto px-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface dark:text-slate-100 text-center mb-16 italic" data-i18n="testimonials_title">Experiencias de nuestros clientes</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white/50 dark:bg-slate-800/40 p-8 rounded-lg glass-effect border border-white/40 dark:border-slate-700">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant dark:text-slate-300 italic mb-6">"Nunca había probado una donut con esta textura. Esponjosa, ligera y el sabor a lavanda es simplemente celestial. Un lujo total."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div>
+<p class="font-label-sm text-on-surface dark:text-pink-300">Lucía Mendoza</p>
+<p class="text-xs text-on-surface-variant">Crítica Gastronómica</p>
+</div>
+</div>
+</div>
+<div class="bg-white/50 dark:bg-slate-800/40 p-8 rounded-lg glass-effect border border-white/40 dark:border-slate-700">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant dark:text-slate-300 italic mb-6">"La presentación es tan impecable que casi da pena comérselas. Pero una vez que lo haces, entiendes por qué Sweet Donuts es diferente."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div>
+<p class="font-label-sm text-on-surface dark:text-pink-300">Javier Ruíz</p>
+<p class="text-xs text-on-surface-variant">Cliente Frecuente</p>
+</div>
+</div>
+</div>
+<div class="bg-white/50 dark:bg-slate-800/40 p-8 rounded-lg glass-effect border border-white/40 dark:border-slate-700">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant dark:text-slate-300 italic mb-6">"El balance perfecto de azúcar. Ingredientes que se notan de primera calidad. Definitivamente la mejor pastelería de la ciudad."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div>
+<p class="font-label-sm text-on-surface dark:text-pink-300">Elena Sanchís</p>
+<p class="text-xs text-on-surface-variant">Chef Pastelera</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Ubicación Section -->
+<section class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500" id="ubicacion">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-stretch">
+<div class="lg:col-span-1 space-y-8 py-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface dark:text-slate-100" data-i18n="visit_title">Visítanos</h2>
+<p class="text-on-surface-variant dark:text-slate-400" data-i18n="visit_desc">Estamos ubicados en el emblemático barrio del diseño, un espacio acogedor donde el aroma a masa recién horneada te dará la bienvenida.</p>
+<div class="space-y-4">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<div>
+<p class="font-bold text-on-surface dark:text-slate-100" data-i18n="addr_label">Dirección</p>
+<p class="text-on-surface-variant dark:text-slate-400">Calle de la Dulzura 42, 28004 Madrid</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<div>
+<p class="font-bold text-on-surface dark:text-slate-100">Horario</p>
+<p class="text-on-surface-variant dark:text-slate-400">Lunes a Sábado: 08:00 - 20:00</p>
+<p class="text-on-surface-variant dark:text-slate-400">Domingos: 09:00 - 14:00</p>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-on-surface dark:bg-primary text-white rounded-full font-label-sm hover:bg-slate-800 dark:hover:bg-primary-container transition-all" data-i18n="btn_directions">Cómo llegar</button>
+</div>
+<div class="lg:col-span-2 relative min-h-[400px] rounded-lg overflow-hidden shadow-lg border border-surface-container">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="A stylized, high-end map representation of a boutique urban district. The map uses a minimalist aesthetic with a clean white and soft grey color scheme, featuring delicate pink pins and elegant typography. The vibe is sophisticated and artistic, aligning with the Sweet Donuts premium brand and its 'Artisanal Indulgence' theme." data-location="Madrid, Spain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACXN0Zz-XOpjdiFkmZN_xkP73RWuW45ryuDDWq_QM03nv7IXgrcif68eYXUm7gED1pOYG3uHTAJRvSUyvEDCb843vdFKZs2iXgcfQasiAPnB3aKxevqnaWyd1YNHsjDZqLQtcYMByiV-SZUh7pq2pHX8ZBwCIyN7TGgwclM6To6lhBwPY0EE_82BUgroC6oGUXguFXZtMowGKHytWY23eNrQ7ocSM_6r3GRVTeNddgVtrfKP_jJ286F00zn35tn_ae9yq-T4os5NQ"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white p-4 rounded-full shadow-2xl animate-bounce">
+<div class="w-4 h-4 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Section -->
+<footer class="w-full py-12 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 max-w-7xl mx-auto">
+<div class="space-y-4">
+<p class="text-xl font-headline-lg font-bold text-[#E91E63]">Sweet Donuts</p>
+<p class="font-body-md text-sm text-slate-500 dark:text-slate-400" data-i18n="footer_slogan">Artesanía y lujo en cada bocado. Redefiniendo el placer desde 2020.</p>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-[#E91E63] transition-all" href="https://instagram.com" target="_blank">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+</a>
+<a class="text-slate-500 hover:text-[#E91E63] transition-all" href="https://facebook.com" target="_blank">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
+<a class="text-slate-500 hover:text-[#E91E63] transition-all" href="https://twitter.com" target="_blank">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+</a>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-bold text-on-surface" data-i18n="footer_nav">Navegación</p>
+<div class="flex flex-col gap-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#E91E63] transition-all underline-offset-4 hover:underline" href="#historia" data-i18n="nav_historia">Historia</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#E91E63] transition-all underline-offset-4 hover:underline" href="#menu" data-i18n="nav_menu">Menú</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#E91E63] transition-all underline-offset-4 hover:underline" href="#testimonios" data-i18n="nav_testimonios">Testimonios</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#E91E63] transition-all underline-offset-4 hover:underline" href="#ubicacion" data-i18n="nav_ubicacion">Ubicación</a>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-bold text-on-surface" data-i18n="footer_legal">Legal</p>
+<div class="flex flex-col gap-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#E91E63] transition-all underline-offset-4 hover:underline" href="#" data-i18n="legal_notice">Aviso Legal</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#E91E63] transition-all underline-offset-4 hover:underline" href="#" data-i18n="legal_privacy">Privacidad</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#E91E63] transition-all underline-offset-4 hover:underline" href="#" data-i18n="legal_cookies">Cookies</a>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-bold text-on-surface">Newsletter</p>
+<p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="newsletter_desc">Suscríbete para recibir nuestras ediciones limitadas.</p>
+<div class="flex">
+<input class="w-full bg-white dark:bg-slate-900 border-outline-variant rounded-l-full px-4 py-2 text-sm focus:ring-primary focus:border-primary" placeholder="Email" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-r-full hover:bg-primary-container transition-colors"><span class="material-symbols-outlined" data-icon="send">send</span></button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 pt-8 mt-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="font-body-md text-sm text-slate-500 dark:text-slate-400">© 2024 Sweet Donuts Artisanal Patisserie. Todos los derechos reservados.</p>
+</div>
+</footer>
+<!-- WhatsApp FAB -->
+<a class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300" href="https://wa.me/yournumber" target="_blank">
+<svg fill="currentColor" height="32" viewbox="0 0 16 16" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.507zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+</svg>
+</a>
+
+<script>
+    // --- DARK MODE LOGIC ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.material-symbols-outlined');
+    const htmlElement = document.documentElement;
+
+    // Load initial theme
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlElement.classList.add('dark');
+        themeIcon.innerText = 'light_mode';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+        localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+        themeIcon.innerText = htmlElement.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    });
+
+    // --- LANGUAGE LOGIC ---
+    const langToggle = document.getElementById('lang-toggle');
+    let currentLang = 'es';
+
+    const translations = {
+        es: {
+            nav_historia: "Historia", nav_menu: "Menú", nav_testimonios: "Testimonios", nav_ubicacion: "Ubicación",
+            btn_order: "Pedir Ahora", hero_badge: "Artesanía Pura", hero_title: "El Arte de la Dulzura",
+            hero_desc: "Descubre donuts de autor elaboradas cada mañana con ingredientes premium y un toque de pasión artesanal. Una experiencia de lujo para los paladares más exigentes.",
+            btn_view_menu: "Ver el Menú", btn_our_history: "Nuestra Historia",
+            history_title: "Nuestra Historia", history_date: "Desde 2020", history_date_desc: "Perfeccionando la receta",
+            history_p1: "Nacimos en el corazón de la ciudad con un propósito claro: elevar la donut tradicional a la categoría de alta pastelería.",
+            history_p2: "En Sweet Donuts, cada pieza es el resultado de 48 horas de fermentación lenta y una selección rigurosa de harinas orgánicas y frutos de temporada.",
+            stat_natural: "Ingredientes Naturales", stat_handmade: "Artesanía Diaria",
+            menu_title: "El Menú de Autor", menu_desc: "Nuestra colección permanente y las ediciones limitadas del mes.",
+            btn_add: "Añadir al pedido", testimonials_title: "Experiencias de nuestros clientes",
+            visit_title: "Visítanos", visit_desc: "Estamos ubicados en el emblemático barrio del diseño, un espacio acogedor.",
+            addr_label: "Dirección", addr_val: "Calle de la Dulzura 42, 28004 Madrid", btn_directions: "Cómo llegar",
+            footer_slogan: "Artesanía y lujo en cada bocado. Redefiniendo el placer desde 2020.",
+            footer_nav: "Navegación", footer_legal: "Legal", newsletter_desc: "Suscríbete para recibir nuestras ediciones limitadas.",
+            legal_notice: "Aviso Legal", legal_privacy: "Privacidad", legal_cookies: "Cookies"
+        },
+        en: {
+            nav_historia: "History", nav_menu: "Menu", nav_testimonios: "Testimonials", nav_ubicacion: "Location",
+            btn_order: "Order Now", hero_badge: "Pure Craftsmanship", hero_title: "The Art of Sweetness",
+            hero_desc: "Discover signature donuts crafted every morning with premium ingredients and a touch of artisanal passion. A luxury experience for the most demanding palates.",
+            btn_view_menu: "View Menu", btn_our_history: "Our History",
+            history_title: "Our Story", history_date: "Since 2020", history_date_desc: "Perfecting the recipe",
+            history_p1: "We were born in the heart of the city with a clear purpose: to elevate the traditional donut to high pastry status.",
+            history_p2: "At Sweet Donuts, each piece is the result of 48 hours of slow fermentation and a rigorous selection of organic flours and seasonal fruits.",
+            stat_natural: "Natural Ingredients", stat_handmade: "Daily Craftsmanship",
+            menu_title: "Signature Menu", menu_desc: "Our permanent collection and limited editions of the month.",
+            btn_add: "Add to order", testimonials_title: "Customer Experiences",
+            visit_title: "Visit Us", visit_desc: "Located in the iconic design district, a cozy space where the scent of fresh dough welcomes you.",
+            addr_label: "Address", addr_val: "42 Sweetness St, 28004 Madrid", btn_directions: "Get Directions",
+            footer_slogan: "Craftsmanship and luxury in every bite. Redefining pleasure since 2020.",
+            footer_nav: "Navigation", footer_legal: "Legal", newsletter_desc: "Subscribe to receive our limited editions.",
+            legal_notice: "Legal Notice", legal_privacy: "Privacy", legal_cookies: "Cookies"
+        }
+    };
+
+    langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                el.innerHTML = translations[currentLang][key];
+            }
+        });
+    });
+</script>
+
+</body></html>
