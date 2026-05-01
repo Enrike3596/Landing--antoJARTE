@@ -175,12 +175,12 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 <p class="font-body-lg text-secondary dark:text-slate-400 max-w-2xl mx-auto" data-i18n="menu_page_desc">Cada donut es una obra de arte, creada a mano con ingredientes de origen local y pasión por la excelencia.</p>
 </section>
 <!-- Category Filter -->
-<div class="flex gap-4 overflow-x-auto pb-8 hide-scrollbar snap-x">
-<button class="px-8 py-3 rounded-full bg-primary text-on-primary font-semibold shadow-md flex-shrink-0 snap-start" data-i18n="cat_all">Todas</button>
-<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_classics">Clásicas</button>
-<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_premium">Premium</button>
-<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_filled">Rellenas</button>
-<button class="px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-i18n="cat_vegan">Veganas</button>
+<div class="flex gap-3 overflow-x-auto pb-8 hide-scrollbar snap-x touch-pan-x -mx-6 px-6 md:mx-0 md:px-0" id="category-filters">
+<button class="filter-btn px-8 py-3 rounded-full bg-primary text-on-primary font-semibold shadow-md flex-shrink-0 snap-start transition-all" data-filter="all" data-i18n="cat_all">Todas</button>
+<button class="filter-btn px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-filter="classics" data-i18n="cat_classics">Clásicas</button>
+<button class="filter-btn px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-filter="premium" data-i18n="cat_premium">Premium</button>
+<button class="filter-btn px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-filter="filled" data-i18n="cat_filled">Rellenas</button>
+<button class="filter-btn px-8 py-3 rounded-full bg-white dark:bg-slate-900 text-secondary dark:text-slate-300 border border-outline-variant dark:border-slate-800 hover:border-primary hover:text-primary transition-all flex-shrink-0 snap-start" data-filter="vegan" data-i18n="cat_vegan">Veganas</button>
 </div>
 <!-- Promociones Bento Grid -->
 <section class="mb-20">
@@ -213,9 +213,9 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 <span class="material-symbols-outlined">filter_list</span>
 </div>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-12">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-12" id="product-grid">
 <!-- Product 1 -->
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="premium">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A gourmet donut with a glossy dark chocolate glaze topped with gold leaf flakes and roasted hazelnuts. The setting is a bright, high-key minimalist space with soft shadows. The lighting emphasizes the rich, reflective texture of the chocolate and the metallic sparkle of the gold, evoking a mood of sophisticated luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDinQ6YgOBdzbBOhwS-akMyXqkDjNJLkUax0l739vQlARq2JXkTeqPG_kLpj2yk0T-gZSEbZwSIX_poF9hPt-VCRz8mngcMD_XJqh5q21s986MVuGppPIuHZJTBwIASFRA4vRnZpPJtuupfr0x3sPjFaMu0Cgb1bDUiwCOKAFhYIz1aLfo21cdc0fsVT7RmOLKlYnaSYmir9dg0XTnOrOD66RbpKYCSQYuQSPel7gXr9BpOpQxctlugU8OwwAcAXLpluGnVAM5teAI"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -230,7 +230,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 <p class="text-primary font-bold text-lg">$2.500</p>
 </div>
 </div>
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="classics">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist photograph of a classic vanilla bean donut with a smooth, translucent glaze and speckles of real vanilla. The lighting is bright and high-key, creating a clean white aesthetic. The pastry looks incredibly soft and pillowy, set against a soft Glaze Cream backdrop with very subtle ambient shadows for depth." src="./Img/NuevaImagen.jpeg"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -246,7 +246,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 2 -->
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="classics">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An exquisite artisanal donut featuring a vibrant raspberry pink glaze with a crown of fresh forest berries and a dusting of powdered sugar. The image is shot in a bright, modern light-mode studio setting, emphasizing clean lines and white space. The overall mood is refreshing, organic, and appetizingly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGm-afGKStDkcGdqCoP0Y1CcZFCE2yC7ucN053mZdX_ZyrGB3XWuYvYg8rlAzaRcn7y-lyb7y9DTq5vT2s8kq2GSh6axn614T5BrgCjUjHR2sDZ_7Oenh9wQZuIljfFJPBG-3T1vOg1eg-89aEafaro9NcV12rDg4xHPGaXAQpilFCsNXB_H-vzilo9bxKMao1ip4Vb9nZCX9bQA0oU0Ga6Qa_Yr_PVLOHhw1slqSbEDt1oYH5bWcwQjKGqpRgXP05Pdgp1JXBJw4"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -262,7 +262,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 3 -->
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="classics">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist photograph of a classic vanilla bean donut with a smooth, translucent glaze and speckles of real vanilla. The lighting is bright and high-key, creating a clean white aesthetic. The pastry looks incredibly soft and pillowy, set against a soft Glaze Cream backdrop with very subtle ambient shadows for depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2_w1MpIVrRNinVUlDxyVEmD6o7Fkz7dQxzcTKMNAr6KAIeBdNf_4RK3iKFB3UzBRypKTN4NabWw-eRsKQ5iF8Rdgd6FgSgSUVCBcnCBHPbteEbxm8P2Nks3ElRLORe3k5c4ux2DI6HGf9FoQpdmvuyNsvmrfZFkkt3aEB2fq3tj1l8GFceEerEJZeVwAR2jde-3oNfZO44W-dZe4bQmUY3lv9JZ2_7e6PVjLni5KVH_edXfH1FjSf0q_wrWeGXzz299t6vmg9vbE"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -277,7 +277,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 <p class="text-primary font-bold text-lg">$3.000</p>
 </div>
 </div>
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="classics">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist photograph of a classic vanilla bean donut with a smooth, translucent glaze and speckles of real vanilla. The lighting is bright and high-key, creating a clean white aesthetic. The pastry looks incredibly soft and pillowy, set against a soft Glaze Cream backdrop with very subtle ambient shadows for depth." src="./Img/ComboMini.jpeg"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -293,7 +293,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 4 (Vegan) -->
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="vegan">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A beautifully crafted vegan donut with a matcha green tea glaze and a sprinkle of toasted sesame seeds. The setting is a minimalist gallery-like space with soft, natural lighting. The color palette features soothing greens and clean whites, reflecting a serene and health-conscious artisanal vibe that is modern and polished." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV15OIxFC6eevI_LabsyCSKi4O7pfp5EQhCPN63UY8QSr0cg9Jrb9pwFjs1WTGRYyo1rokDT3uvCiXWkLtsZqDLPVFbX-dgMadhKTTH6UAybZBUs55d9nyY01Nv9ZvGmbp9DY_UG5TeXdrgj5OV4bOhpMRnWzWUNo7YH1n7qYar5g2IM1RShKjth45d8Bg3dAhwkaRLClr6PZ1eRrNJwOr_3yaRi77BeU8iOM0qHFhVJMg3tlRyzaiS74dp20ZaPWq2JW9w5aF02w"/>
 <span class="absolute top-4 left-4 bg-tertiary text-on-tertiary text-[10px] font-bold px-3 py-1 rounded-full">VEGANA</span>
@@ -310,7 +310,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 5 -->
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="filled">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A decadent artisanal donut filled with smooth pistachio cream and topped with crushed pistachios and a honey drizzle. The lighting is warm and directional, casting soft shadows that give the pastry a tactile, three-dimensional look. The style is approachable luxury, using a palette of golden honey and clean white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXMKkk9Z60v31OZnnBjnj_PZQsAhf0ALZfVxHbqhpqpoCy8ZImSoAoFEo-nWJUK22nrAGWsv7xKt7bhHkmM8vckmvP2OWAhthPJsC9ldCnROt17gzBSAG9QK4mVi1PSI8VoqVRaL02I_zHLjqiCCfvzhpJXkK3LQshB9xr4nsdPEJZHTf5WSlk-0Mvr0LeMQnjKyGK9aDBQLWeG7pAgAXY7rzF_5RAydHGUAuMCbdVfBDkF6TTH7KuWLtFjTlPMfBOAO8rtvlm65A"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -326,7 +326,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 6 -->
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="filled">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A gourmet donut with a lemon zest glaze and toasted meringue peaks, creating a sculptural and delicious appearance. The photography is high-key and bright, with a minimalist aesthetic that focuses on the organic, pillowy shape of the donut. The atmosphere is light and refreshing, with vibrant yellow and pristine white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnm6ceM77rq_EpvzXqPBt7E3E5OkQT8Zvbbbnh5hhD8DS_TpTdvKbxrrrbOvzPHBKl4LmylPs1p9Sv7Sw6sygs1J5c_-PHDH7pEsN2SKx2Jn1hV5kthhOvoY_ZPtjw_-GMhWIVj9mtPjd-m38W_esKJzs4SJQme0hXZrq77aaNdXULbHNd2kNDZ3iop7qk_-f5ANPR7yLZgBw26IS0VpsVG59MaGtU1Q4ldjpx1fXNwHBpjAlgoOm1V1x5DlKn-ru8XXE-OhRt64E"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -342,7 +342,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 9 -->
-<div class="group">
+<div class="group product-item transition-all duration-300" data-category="filled">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A gourmet donut with a lemon zest glaze and toasted meringue peaks, creating a sculptural and delicious appearance. The photography is high-key and bright, with a minimalist aesthetic that focuses on the organic, pillowy shape of the donut. The atmosphere is light and refreshing, with vibrant yellow and pristine white tones." src="./Img/Combo8.jpeg"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -358,7 +358,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 10 -->
- <div class="group">
+ <div class="group product-item transition-all duration-300" data-category="premium">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist photograph of a classic vanilla bean donut with a smooth, translucent glaze and speckles of real vanilla. The lighting is bright and high-key, creating a clean white aesthetic. The pastry looks incredibly soft and pillowy, set against a soft Glaze Cream backdrop with very subtle ambient shadows for depth." src="./Img/CajaCombo.jpeg"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -374,7 +374,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </div>
 <!-- Product 11 -->
- <div class="group">
+ <div class="group product-item transition-all duration-300" data-category="premium">
 <div class="aspect-square rounded-lg overflow-hidden mb-4 bg-surface-container-low dark:bg-slate-800 relative shadow-sm transition-all duration-300 hover:shadow-xl">
 <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist photograph of a classic vanilla bean donut with a smooth, translucent glaze and speckles of real vanilla. The lighting is bright and high-key, creating a clean white aesthetic. The pastry looks incredibly soft and pillowy, set against a soft Glaze Cream backdrop with very subtle ambient shadows for depth." src="./Img/Premium.jpeg"/>
 <button class="add-to-cart absolute bottom-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-lg opacity-0 group-hover:opacity-100 transition-all active:scale-90">
@@ -611,6 +611,35 @@ function eliminar(index) {
     }
     renderCarrito();
 }
+
+// =======================
+// 🔍 FILTRADO POR CATEGORÍA
+// =======================
+const filterButtons = document.querySelectorAll('.filter-btn');
+const productItems = document.querySelectorAll('.product-item');
+
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-filter');
+
+        // Actualizar estilos de botones
+        filterButtons.forEach(b => {
+            b.classList.remove('bg-primary', 'text-on-primary', 'shadow-md');
+            b.classList.add('bg-white', 'dark:bg-slate-900', 'text-secondary', 'dark:text-slate-300', 'border', 'border-outline-variant', 'dark:border-slate-800');
+        });
+        btn.classList.add('bg-primary', 'text-on-primary', 'shadow-md');
+        btn.classList.remove('bg-white', 'dark:bg-slate-900', 'text-secondary', 'dark:text-slate-300', 'border', 'border-outline-variant', 'dark:border-slate-800');
+
+        // Filtrar productos
+        productItems.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    });
+});
 
     // --- THEME & LANGUAGE ---
     const themeToggle = $('theme-toggle');
