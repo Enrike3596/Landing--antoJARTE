@@ -163,7 +163,7 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 <span data-i18n="cart_total">Total</span>
 <span>$8.75</span>
 </div>
-<button class="w-full py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg hover:opacity-90 transition-all active:scale-95" data-i18n="btn_checkout">
+<button id="checkout-btn" class="w-full py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg hover:opacity-90 transition-all active:scale-95" data-i18n="btn_checkout">
                 Proceed to Checkout
             </button>
 </div>
@@ -611,6 +611,35 @@ function eliminar(index) {
     }
     renderCarrito();
 }
+
+// =======================
+// 💳 CHECKOUT WHATSAPP
+// =======================
+$('checkout-btn')?.addEventListener('click', () => {
+    if (carrito.length === 0) {
+        alert(currentLang === 'es' ? 'Tu carrito está vacío' : 'Your cart is empty');
+        return;
+    }
+
+    let total = 0;
+    let listaProductos = "";
+    
+    carrito.forEach(item => {
+        const priceNumber = parseFloat(item.precio.replace(/[$.]/g, "")) || 0;
+        total += (priceNumber * item.cantidad);
+        listaProductos += `• ${item.cantidad}x ${item.nombre} (${item.precio})\n`;
+    });
+
+    const mensaje = encodeURIComponent(
+        `¡Hola! Me gustaría realizar un pedido en antojARTE.\n\n` +
+        `🛍️ *Detalle del pedido:*\n${listaProductos}\n` +
+        `💰 *Total a pagar:* $${total.toLocaleString('es-ES')}\n\n` +
+        `¿Podemos coordinar el modo de pago para completar la venta?`
+    );
+
+    const whatsappUrl = `https://wa.me/573000000000?text=${mensaje}`;
+    window.open(whatsappUrl, '_blank');
+});
 
 // =======================
 // 🔍 FILTRADO POR CATEGORÍA
