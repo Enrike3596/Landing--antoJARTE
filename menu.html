@@ -108,6 +108,9 @@
 <!-- TopNavBar -->
 <header class="fixed top-0 w-full z-50 border-b border-white/20 dark:border-slate-800 glass-effect bg-white/70 dark:bg-slate-900/70 shadow-sm">
 <nav class="flex justify-between items-center h-20 px-6 md:px-12 w-full max-w-7xl mx-auto">
+<button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">menu</span>
+</button>
 <a class="text-2xl font-headline-lg font-bold text-primary dark:text-[#FF4081]" href="index.html">AntoJARTE</a>
 <div class="hidden md:flex items-center gap-8 font-body-md">
 <a class="text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="index.html#historia" data-i18n="nav_historia">Historia</a>
@@ -148,6 +151,26 @@ hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
 </div>
 </nav>
 </header>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[100] bg-white dark:bg-slate-900 translate-x-full transition-transform duration-300 md:hidden flex flex-col p-8">
+<div class="flex justify-between items-center mb-12">
+<span class="text-2xl font-bold text-primary">AntoJARTE</span>
+<button id="close-mobile-menu" class="p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-6 text-xl">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors font-semibold" href="index.html#historia" data-i18n="nav_historia">Historia</a>
+<a class="text-primary font-bold transition-colors font-semibold" href="menu.html" data-i18n="nav_menu">Menú</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors font-semibold" href="index.html#testimonios" data-i18n="nav_testimonios">Testimonios</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors font-semibold" href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación</a>
+<div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
+<a href="tel:+573000000000" class="w-full bg-primary text-on-primary px-6 py-4 rounded-full font-label-sm shadow-md transition-all active:scale-95 inline-block text-center" data-i18n="btn_order">
+    Pedir Ahora
+</a>
+</div>
+</div>
+</div>
 <!-- SideNavBar (Active Cart) -->
 <aside id="cart-sidebar" class="fixed right-0 top-0 h-full w-80 md:w-96 shadow-2xl z-[60] bg-zinc-50 dark:bg-slate-900 border-l border-zinc-200 dark:border-slate-800 flex flex-col p-6 space-y-4 font-serif text-zinc-800 dark:text-slate-100 transform translate-x-full transition-transform duration-300">
 <div class="flex justify-between items-center pb-4">
@@ -483,6 +506,24 @@ const openCartBtns = [$('cart-toggle')];
 
 let carrito = [];
 
+// =======================
+// 📱 MOBILE MENU LOGIC
+// =======================
+const mobileMenuBtn = $('mobile-menu-btn');
+const closeMobileMenuBtn = $('close-mobile-menu');
+const mobileMenu = $('mobile-menu');
+
+const toggleMobileMenu = (open) => {
+    mobileMenu.classList.toggle('translate-x-full', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+};
+
+mobileMenuBtn?.addEventListener('click', () => toggleMobileMenu(true));
+closeMobileMenuBtn?.addEventListener('click', () => toggleMobileMenu(false));
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => toggleMobileMenu(false));
+});
+
 const cartContainer = document.querySelector("#cart-sidebar .flex-grow");
 const totalElement = document.querySelector("#cart-sidebar .font-bold span:last-child");
 const badges = document.querySelectorAll(".cart-badge");
@@ -679,6 +720,7 @@ filterButtons.forEach(btn => {
     const translations = {
         es: {
             nav_historia: "Historia", nav_menu: "Menú", nav_testimonios: "Testimonios", nav_ubicacion: "Ubicación",
+            btn_order: "Pedir Ahora",
             cart_title: "Tu Selección", cart_subtitle: "Dulzuras artesanales esperando", cart_total: "Total", btn_checkout: "Proceder al Pago",
             menu_page_title: "Nuestro Menú Artesanal", menu_page_desc: "Cada donut es una obra de arte, creada a mano con ingredientes locales.",
             cat_all: "Todas", cat_classics: "Clásicas", cat_premium: "Premium", cat_filled: "Rellenas", cat_vegan: "Veganas",
@@ -697,6 +739,7 @@ filterButtons.forEach(btn => {
         },
         en: {
             nav_historia: "History", nav_menu: "Menu", nav_testimonios: "Testimonials", nav_ubicacion: "Location",
+            btn_order: "Order Now",
             cart_title: "Your Selection", cart_subtitle: "Artisanal treats awaiting", cart_total: "Total", btn_checkout: "Checkout",
             menu_page_title: "Our Artisanal Menu", menu_page_desc: "Each donut is a work of art, hand-crafted with local ingredients.",
             cat_all: "All", cat_classics: "Classics", cat_premium: "Premium", cat_filled: "Filled", cat_vegan: "Vegan",

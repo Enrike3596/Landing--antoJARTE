@@ -108,6 +108,9 @@
 <!-- TopNavBar -->
 <header class="fixed top-0 w-full z-50 border-b border-white/20 dark:border-slate-800 glass-effect bg-white/70 dark:bg-slate-900/70 shadow-sm">
 <nav class="flex justify-between items-center h-20 px-6 md:px-12 w-full max-w-7xl mx-auto">
+<button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">menu</span>
+</button>
 <a class="text-2xl font-headline-lg font-bold text-primary dark:text-[#FF4081]" href="#">AntoJARTE</a>
 <div class="hidden md:flex items-center gap-8 font-body-md">
 <a class="font-body-md text-slate-600 dark:text-slate-300 hover:text-[#E91E63] transition-colors" href="#historia" data-i18n="nav_historia">Historia</a>
@@ -130,6 +133,26 @@
 </div>
 </nav>
 </header>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[100] bg-white dark:bg-slate-900 translate-x-full transition-transform duration-300 md:hidden flex flex-col p-8">
+<div class="flex justify-between items-center mb-12">
+<span class="text-2xl font-bold text-primary">AntoJARTE</span>
+<button id="close-mobile-menu" class="p-2 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-full">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-6 text-xl">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors font-semibold" href="#historia" data-i18n="nav_historia">Historia</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors font-semibold" href="menu.html" data-i18n="nav_menu">Menú</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors font-semibold" href="#testimonios" data-i18n="nav_testimonios">Testimonios</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors font-semibold" href="#ubicacion" data-i18n="nav_ubicacion">Ubicación</a>
+<div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
+<a href="tel:+573000000000" class="w-full bg-primary text-on-primary px-6 py-4 rounded-full font-label-sm shadow-md transition-all active:scale-95 inline-block text-center" data-i18n="btn_order">
+    Pedir Ahora
+</a>
+</div>
+</div>
+</div>
 <!-- Hero Section -->
 <section class="relative min-h-screen flex items-center pt-28 overflow-hidden">
 <div class="absolute inset-0 z-0 bg-white dark:bg-slate-950">
@@ -427,6 +450,22 @@ Descubre una forma diferente de regalar, compartir y disfrutar…
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle.querySelector('.material-symbols-outlined');
     const htmlElement = document.documentElement;
+
+    // --- MOBILE MENU LOGIC ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    const toggleMobileMenu = (open) => {
+        mobileMenu.classList.toggle('translate-x-full', !open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    mobileMenuBtn?.addEventListener('click', () => toggleMobileMenu(true));
+    closeMobileMenuBtn?.addEventListener('click', () => toggleMobileMenu(false));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+    });
 
     // Load initial theme
     if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
