@@ -2,6 +2,11 @@
 
 Esta es la página de aterrizaje para "AntoJARTE", un negocio especializado en la venta de mini donas artesanales y personalizadas.
 
+## 🌐 Sitio en vivo
+
+El portafolio se encuentra publicado en **Azure Static Web Apps**:
+
+👉 [https://victorious-forest-05388c00f.7.azurestaticapps.net](https://victorious-forest-05388c00f.7.azurestaticapps.net)
 ## Sobre la Página Web
 
 La página web sirve como una vitrina digital para "AntoJARTE". Presenta la historia de la marca, su menú de donas de autor, testimonios de clientes satisfechos y la ubicación de su tienda física. El objetivo es atraer a nuevos clientes y proporcionar información esencial sobre sus productos y servicios.
